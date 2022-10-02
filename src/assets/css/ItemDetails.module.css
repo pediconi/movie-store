@@ -1,0 +1,24 @@
+.container {
+  margin-top: 110px;
+  display: flex; /*FLEX pone uno al lado del otro y los fuerza a que queden asi BLOCK pone uno abajo del otro     */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.movieText {
+  color: white;
+}
+
+.movieImage {
+  border-radius: 10px;
+}
+
+.item {
+  max-width: 350px;
+  margin: 20px; /*margen respecto a cada item (separacion)*/
+  height: auto;
+}
+
+.title {
+  margin-top: 0;
+}

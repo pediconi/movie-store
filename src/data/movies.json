@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Thor",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ehSQcx7fYCRe92FPRdOjVjlgM3W.jpg",
+    "price": 5.99,
+    "stock": 5,
+    "category" : "movie",
+    "genres":["Fantasy", "Action", "Comedy"],
+    "duration": "122"
+  },
+  {
+    "id": 2,
+    "title": "Prey",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sNAMqQ9T7YnXnvUSufeWzaRgK6Y.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "serie",
+    "genres":["Thriller", "Action", "Science Fiction"],
+    "duration": "100"
+  },
+  {
+    "id": 3,
+    "title": "Pinoccio",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1yIM2QL0qLzWMjTGuMX12yZnBtb.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "movie",
+    "genres":["Fantasy", "Adventure", "Family"],
+    "duration": "105"
+  },
+  {
+    "id": 4,
+    "title": "DragonBall Super",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rugyJdeoJm7cSJL1q4jBpTNbxyU.jpg",
+    "price": 5.99,
+    "stock": 5,
+    "category" : "movie",
+    "genres":["Animation", "Science Fiction", "Action"],
+    "duration": "99"
+  },
+  {
+    "id": 5,
+    "title": "Samaritan",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4GVIfQVABjKuAWy3fvidPJZE52t.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "movie",
+    "genres":["Action", "Drama", "Science Fiction"],
+    "duration": "102"
+  },
+  {
+    "id": 6,
+    "title": "See",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8KdlSTDiYGVfvWwrNY9hnNmDvRP.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "serie",
+    "genres":["Drama", "Action"],
+    "duration": "55"
+  },
+  {
+    "id": 7,
+    "title": "The Walking Dead: El principio del fin",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hUblG1KZCTRpHc3wqqoU0DW98Q3.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "serie",
+    "genres":["Action", "Science Fiction", "Horror"],
+    "duration": "50"
+  },
+  {
+    "id": 8,
+    "title": "The Boys",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Aes6nbECN7j61PEnPmz3eQKE0x.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "serie",
+    "genres":["Science Fiction", "Action"],
+    "duration": "55"
+  },
+  {
+    "id": 9,
+    "title": "TopGun: Maverick",
+    "src": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/AlWpEpQq0RgZIXVHAHZtFhEvRgd.jpg",
+    "price": 4.99,
+    "stock": 5,
+    "category" : "movie",
+    "genres":["Action", "Drama"],
+    "duration": "131"
+  }
+]

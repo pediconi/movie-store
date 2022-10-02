@@ -1,0 +1,15 @@
+.text{
+    margin-top: 140px;
+    margin-left: 95px;
+    text-align: left;
+    font-size: 2rem;
+    color:white;
+}
+
+.moviesGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 180px);
+  gap: 60px;    /*separacion entre grilla o tarjeta*/
+  padding: 30px;    
+  justify-content: center;   /*poner todo el contenido centrado*/
+}
