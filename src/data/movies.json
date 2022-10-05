@@ -51,7 +51,7 @@
     "price": 4.99,
     "stock": 5,
     "category" : "movie",
-    "genres":["Action", "Drama", "Science Fiction"],
+    "genres":["Action", "Drama", "Science Fiction "],
     "duration": "102"
   },
   {
