@@ -14,6 +14,7 @@ export const ItemDetails = () => {
   const onAdd = (quantity) => {
     alert(`comprados : ${quantity} de ${movie.title}`);
   };
+  
 
   useEffect(() => {
     FetchData(true).then((data) => {
@@ -33,8 +34,12 @@ export const ItemDetails = () => {
     return null;
   }
 
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{
+      backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${(movie.bgsrc) })`
+      
+    }}>
       <img
         className={`${styles.movieImage} ${styles.item}`}
         src={movie.src}
@@ -42,7 +47,7 @@ export const ItemDetails = () => {
       />
       <div className={styles.item}>
         <p className={styles.title}>
-          <strong> Title</strong> : {movie.title}
+          <strong className={styles.movieTitle}> {movie.title} </strong>
         </p>
 
         <p>

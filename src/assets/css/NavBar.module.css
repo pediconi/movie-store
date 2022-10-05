@@ -1,15 +1,39 @@
-.navBarMenu {
-  display: flex;
+.header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
   justify-content: space-between;
   padding-right: 2rem;
+  transition: 0.5s all ease;
+  
+}
+.header-scroll{
+  background-color: rgb(7, 7, 7);
   position: fixed;
-  top: 0px;
+  height: 80px;
   width: 100%;
-  background-color: black;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  justify-content: space-between;
+  padding-right: 2rem;
+  transition: 0.5s all ease;
+}
+
+.header .navbar ,.header-scroll .navbar{
+  display: flex;
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  z-index: 1;
+  justify-content: space-between;
 }
 
 
-.navBarMenu ul {
+.header ul ,.header-scroll ul{
   display: flex;
   gap: 2rem;
   margin: 0;
@@ -17,13 +41,22 @@
   align-items: center;
 }
 
-.navBarMenu a {
+.header a,.header-scroll a {
   font-size: 15px;  
   color: white;
   -webkit-filter: brightness(100%);
 }
 
-.navBarMenu li:hover {
+.header li :hover  {
+  -webkit-filter: brightness(40%);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.header-scroll li :hover  {    /* repeti asi porque no encontre la forma de combinar los hover para las 2 clases*/
   -webkit-filter: brightness(40%);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
