@@ -1,0 +1,26 @@
+.container {
+  margin-top: 80px;
+  background-color: rgb(224, 224, 224);
+}
+
+.moviesGridCart {
+  display: block;
+  padding: 20px;
+  justify-content: center; /*poner todo el contenido centrado*/
+}
+
+.emptyCart{
+  font-size: 40px;
+  text-align: center;
+  margin-top: 250px;
+  list-style: none;
+}
+
+.link{
+  color:white;
+  font-family: cursive;
+}
+
+.emptyCart :hover{
+  color:rgb(0, 31, 133);
+}

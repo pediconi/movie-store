@@ -5,16 +5,18 @@ import { FetchData } from "../Utils/FetchData";
 import styles from "../assets/css/ItemDetails.module.css";
 import { LoadingWidget } from "./LoadingWidget";
 import { ItemCount } from "./ItemCount";
+import { useCartContext } from "../context/CartContext";
 
 export const ItemDetails = () => {
   const { idMovie } = useParams();
   const [movie, setMovie] = useState();
   const [loading, setLoading] = useState(true);
 
+  const { addMovie } = useCartContext(); // traigo esta funcion del cart context
+
   const onAdd = (quantity) => {
-    alert(`comprados : ${quantity} de ${movie.title}`);
+    addMovie(movie, quantity); // llamo al metodo addMovie que me provee el cart Context
   };
-  
 
   useEffect(() => {
     FetchData(true).then((data) => {
@@ -34,12 +36,13 @@ export const ItemDetails = () => {
     return null;
   }
 
-
   return (
-    <div className={styles.container} style={{
-      backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${(movie.bgsrc) })`
-      
-    }}>
+    <div
+      className={styles.container}
+      style={{
+        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${movie.bgsrc})`,
+      }}
+    >
       <img
         className={`${styles.movieImage} ${styles.item}`}
         src={movie.src}

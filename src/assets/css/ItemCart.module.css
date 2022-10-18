@@ -1,0 +1,68 @@
+.movieCard {
+  color: rgb(0, 0, 0);
+  list-style: none;
+  text-align: left;
+  font-family: Arial ;
+}
+
+.moviePrice{
+  font-size: 20px;
+  padding-right: 40px;
+  color: #ff2c2c;
+  font-family: monospace;
+}
+.movieText {
+ 
+  padding-left: 30px; 
+  max-width: 60px;
+}
+
+.movieTitle {
+  
+  max-width: 60px;
+}
+
+.movieImage {
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+  height: 160px;
+}
+
+.buttonRemove {
+  background-color: transparent;
+  font-size: 16px;
+  margin-left: 20px;
+  width: 100px;
+  height: 40px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid #ff2c2c;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+}
+
+.buttonRemove:hover {
+  background-color: #ff2c2c;
+  color: white;
+}
+
+.cardLi {
+  display: flex;
+  flex-flow:wrap;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 5px;
+  padding-right: 10px;
+  max-height:max-content;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  max-width: 150px;
+  height: auto;
+}

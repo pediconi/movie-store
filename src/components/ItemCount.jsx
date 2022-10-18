@@ -13,7 +13,7 @@ export const ItemCount = ({ stock, onAdd }) => {
   };
 
   return (
-    <><div >
+    <><div className={styles.container}>
         <button className={styles.buttonModify} disabled={counter <= 0} onClick={decrease}> - </button>
         <span> {counter}</span>
         <button className={styles.buttonModify} disabled={counter >= stock} onClick={increase}> + </button>

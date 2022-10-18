@@ -1,5 +1,4 @@
 .container {
- 
   display: flex; /*FLEX pone uno al lado del otro y los fuerza a que queden asi BLOCK pone uno abajo del otro     */
   justify-content: left;
   flex-wrap: wrap;
