@@ -1,9 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../assets/css/ItemListContainer.module.css";
-import { FetchData } from "../Utils/FetchData";
 import { ItemList } from "./ItemList";
 import { LoadingWidget } from "./LoadingWidget";
+import { getCollection, filterCollection, getSingleDoc } from "../Utils/FireBase.jsx";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 export const ItemListContainer = (props) => {
   const { idCategory } = useParams();
@@ -13,16 +20,53 @@ export const ItemListContainer = (props) => {
   useEffect(() => {
     setLoading(true);
 
-    FetchData(true).then((data) => {
-      if (idCategory) {
-        const filter = data.filter((el) => el.category === idCategory);
-        setMovies(filter);
-      } else {
-        setMovies(data);
-      }
+   /*  const db = getFirestore();
+    const data = collection(db, "Movies"); */
 
-      setLoading(false);
-    });
+    if (idCategory) {
+
+      filterCollection("Movies" , ["category", "==" , idCategory]).then((value) => {
+        const resp = value.docs.map((value) => {
+          return value.data();
+        });
+        setMovies(resp);
+      })
+      .catch((err) => console.log(err));
+
+      /*const q = query(data, where("category", "==", idCategory));
+
+      getDocs(q)
+        .then((value) => {
+          const resp = value.docs.map((value) => {
+            return value.data();
+          });
+          setMovies(resp);
+        })
+        .catch((err) => console.log(err));*/
+
+
+    } else {
+
+      getCollection("Movies").then((value) => {
+        const resp = value.docs.map((value) => {
+          return value.data();
+        });
+        setMovies(resp);
+      })
+      .catch((err) => alert(err));
+
+      /*getDocs(data)
+        .then((value) => {
+          const resp = value.docs.map((value) => {
+            return value.data();
+          });
+          setMovies(resp);
+        })
+        .catch((err) => alert(err));*/
+    }
+
+    setLoading(false);
+
   }, [idCategory]);
 
   if (loading) {
@@ -33,7 +77,7 @@ export const ItemListContainer = (props) => {
     <Fragment>
       <p className={styles.text}>
         <strong>
-          {idCategory  ? idCategory.toUpperCase() + "S" : "BIENVENIDO"}
+          {idCategory ? idCategory.toUpperCase() + "S" : "BIENVENIDO"}
         </strong>
       </p>
       <ItemList movies={movies} />

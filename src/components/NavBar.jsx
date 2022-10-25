@@ -2,13 +2,15 @@ import styles from "../assets/css/NavBar.module.css";
 import { CartWidget } from "./CartWidget";
 import { Utils } from "./Utils";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 export const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const changeColor = () => {
-    if (window.scrollY >=50) {
+    if (window.scrollY >= 50) {
       setNavbarColor(true);
     } else {
       setNavbarColor(false);
@@ -16,6 +18,19 @@ export const NavBar = () => {
   };
 
   window.addEventListener("scroll", changeColor);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const data = collection(db, "Categories");
+    getDocs(data)
+      .then((value) => {
+        const resp = value.docs.map((value) => {
+          return value.data();
+        });
+        setCategories(resp);
+      })
+      .catch((err) => console.log(err));
+  });
 
   return (
     <div className={navbarColor ? styles["header-scroll"] : styles["header"]}>
@@ -27,16 +42,17 @@ export const NavBar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/category/movie">Peliculas</Link>
-            {/*el valor luego de category (o sea el de movie) es el que tomare en itemlistcontainer(xq asi lo indique en route en app*/}
-          </li>
-          <li>
-            <Link to="/category/serie">Series</Link>
-          </li>
-          <li>
-            <Link to="/category/new">Novedades</Link>
-          </li>
+
+          {categories.map((categorie) => (
+            <li key={categorie.key}>
+              <Link to={"/category/" + categorie.name}>
+                {" "}
+                {categorie.name.charAt(0).toUpperCase() +  //paso a mayuscula la primera letra
+                  categorie.name.slice(1)}
+              </Link>
+            </li>
+          ))}
+          
         </ul>
         <Link to="/cart">
           <CartWidget />

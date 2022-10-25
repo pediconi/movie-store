@@ -5,12 +5,14 @@ import { createContext } from "react";
 import { SweetAlert } from "../Utils/SweetAlert";
 
 const CarritoContext = createContext();
+
 export const useCartContext = () => useContext(CarritoContext); // hook para utilizar el contexto CarritoContext en otros componentes al llamarlo
 
 export const CartContextProvider = ({ children }) => {
   // defino todas las funcionalidades que va a proveer CartContext
   const [cart, setCart] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const exist = (movie) => cart.some((el) => el.id === movie.id); // verifico si ya existe la pelicula en el carrito
 
@@ -18,11 +20,13 @@ export const CartContextProvider = ({ children }) => {
     if (exist(movie) && movie.onCart + quantity <= movie.stock) {
       movie.onCart += quantity;
       setTotalItems(totalItems + quantity);
+      setTotal(total + movie.price*quantity);
       setCart(cart);
       SweetAlert.Confirm();
     } else if (!exist(movie)) {
       movie.onCart += quantity;
       setTotalItems(totalItems + quantity);
+      setTotal(total + movie.price*quantity);
       setCart([...cart, movie]); // agrego movie a lo que esta en cart
       SweetAlert.Confirm();
     } else {
@@ -38,6 +42,7 @@ export const CartContextProvider = ({ children }) => {
         } else return { el };
       });
       setTotalItems(totalItems - 1);
+      setTotal(total - movie.price);
     }
     if (movie.onCart === 0) {
       const cartModified = cart.filter((el) => el.id !== movie.id);
@@ -54,7 +59,7 @@ export const CartContextProvider = ({ children }) => {
 
   return (
     <CarritoContext.Provider
-      value={{ cart, exist, addMovie, removeMovie, totalItems }}
+      value={{ cart, exist, addMovie, removeMovie, totalItems, total }}
     >
       {children}
     </CarritoContext.Provider> //retorno al proveedor de cartContext

@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FetchData } from "../Utils/FetchData";
 import styles from "../assets/css/ItemDetails.module.css";
 import { LoadingWidget } from "./LoadingWidget";
 import { ItemCount } from "./ItemCount";
 import { useCartContext } from "../context/CartContext";
+import {
+  getFirestore, doc, getDoc} from "firebase/firestore";
 
 export const ItemDetails = () => {
   const { idMovie } = useParams();
@@ -19,15 +20,19 @@ export const ItemDetails = () => {
   };
 
   useEffect(() => {
-    FetchData(true).then((data) => {
-      let search = data.find((el) => {
-        return el.id == idMovie;
-      });
-      setMovie(search);
-      setLoading(false);
-    });
-  }, []);
 
+    const db = getFirestore();
+    const data = doc(db, "Movies", idMovie);  // aca ver como hago que busque el id que yo cree, en teoria es un string
+
+    getDoc(data)
+        .then((value) => { console.log(value.data())
+          setMovie(value.data()) ;
+          }).catch((err) => alert(err));
+
+          setLoading(false);
+        },[])
+        
+        
   if (loading) {
     return <LoadingWidget />;
   }
