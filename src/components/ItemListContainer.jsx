@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "../assets/css/ItemListContainer.module.css";
 import { ItemList } from "./ItemList";
 import { LoadingWidget } from "./LoadingWidget";
-import { getCollection, filterCollection, getSingleDoc } from "../Utils/FireBase.jsx";
+import { getCollection, filterCollection} from "../Utils/FireBase.jsx";
 import {
   getFirestore,
   collection,

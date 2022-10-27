@@ -30,7 +30,7 @@ export const NavBar = () => {
         setCategories(resp);
       })
       .catch((err) => console.log(err));
-  });
+  },[]);
 
   return (
     <div className={navbarColor ? styles["header-scroll"] : styles["header"]}>

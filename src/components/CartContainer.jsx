@@ -3,15 +3,17 @@ import styles from "../assets/css/CartContainer.module.css";
 import { useCartContext } from "../context/CartContext";
 import { useUserContext } from "../context/UserContext";
 import { ItemCart } from "./ItemCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { SignInUser } from "./SignInUser.jsx";
 import { addSingleDoc } from "../Utils/FireBase.jsx";
 import { SweetAlert } from "../Utils/SweetAlert";
 
 
 export const CartContainer = () => {
-  const { cart, total } = useCartContext();
-  const { currentUser } = useUserContext();
+  const { cart, total, clearCart } = useCartContext();
+  const { currentUser, logOut } = useUserContext();
+
+  const navigate = useNavigate()
 
   const handleClick = () => {
 
@@ -24,6 +26,10 @@ export const CartContainer = () => {
         user: currentUser,
         cart: cart,
       });
+      SweetAlert.Info("Gracias Por Su Compra")
+      clearCart();
+      logOut();
+      navigate("/") 
     }
   };
 
@@ -41,15 +47,13 @@ export const CartContainer = () => {
           </div>
         )}
       </ul>
-      {/* <div style={{color:"black"}}> IMPORTE FINAL: {total}</div>
-      <button onClick={handleClick}> Finalizar Compra</button> */}
-
+  
 
     {cart.length ? ( // si falla aca iba solo el signinuser, directo sin condicional
       <div>  
         <div style={{color:"black"}}> IMPORTE FINAL: {total}</div>
-        <button onClick={handleClick}> Finalizar Compra</button>
         <SignInUser/>  
+        <button onClick={handleClick}> Finalizar Compra</button>
       </div>
     ):(<div>CARRO VACIO</div> )}  
 

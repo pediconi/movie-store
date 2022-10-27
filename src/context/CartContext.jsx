@@ -17,20 +17,27 @@ export const CartContextProvider = ({ children }) => {
   const exist = (movie) => cart.some((el) => el.id === movie.id); // verifico si ya existe la pelicula en el carrito
 
   const addMovie = (movie, quantity) => {
-    if (exist(movie) && movie.onCart + quantity <= movie.stock) {
-      movie.onCart += quantity;
-      setTotalItems(totalItems + quantity);
-      setTotal(total + movie.price*quantity);
-      setCart(cart);
-      SweetAlert.Confirm();
-    } else if (!exist(movie)) {
-      movie.onCart += quantity;
-      setTotalItems(totalItems + quantity);
-      setTotal(total + movie.price*quantity);
-      setCart([...cart, movie]); // agrego movie a lo que esta en cart
-      SweetAlert.Confirm();
-    } else {
-      SweetAlert.Rejected("Stock Insuficiente");
+    if (movie.onCart + quantity <= movie.stock) {
+      let newCart;
+      let findMovie = cart.find((el) => el.id === movie.id);
+
+      if (findMovie && findMovie.onCart + quantity <= movie.stock) {
+        findMovie.onCart += quantity;
+        newCart = [...cart];
+        setCart(newCart);
+        setTotalItems(totalItems + quantity);
+        setTotal(total + movie.price * quantity);
+        SweetAlert.Confirm();
+      } else if (!findMovie) {
+        findMovie = { ...movie, onCart: quantity };
+        newCart = [...cart, findMovie];
+        setCart(newCart);
+        setTotalItems(totalItems + quantity);
+        setTotal(total + movie.price * quantity);
+        SweetAlert.Confirm();
+      } else {
+        SweetAlert.Rejected("Stock Insuficiente");
+      }
     }
   };
 
@@ -57,9 +64,23 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
+  const clearCart = () => {
+    setCart([]);
+    setTotalItems(0);
+    setTotal(0);
+  };
+
   return (
     <CarritoContext.Provider
-      value={{ cart, exist, addMovie, removeMovie, totalItems, total }}
+      value={{
+        cart,
+        exist,
+        addMovie,
+        removeMovie,
+        totalItems,
+        total,
+        clearCart,
+      }}
     >
       {children}
     </CarritoContext.Provider> //retorno al proveedor de cartContext

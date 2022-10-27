@@ -20,8 +20,12 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
+  const logOut = () =>{
+    setCurrentUser({})
+  }
+
   return (
-    <UsuarioContext.Provider value={{ currentUser, createUser }}>
+    <UsuarioContext.Provider value={{ currentUser, createUser , logOut}}>
       {children}
     </UsuarioContext.Provider> //retorno al proveedor de cartContext
   );

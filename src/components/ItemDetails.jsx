@@ -5,8 +5,8 @@ import styles from "../assets/css/ItemDetails.module.css";
 import { LoadingWidget } from "./LoadingWidget";
 import { ItemCount } from "./ItemCount";
 import { useCartContext } from "../context/CartContext";
-import {
-  getFirestore, doc, getDoc} from "firebase/firestore";
+import { getSingleDoc } from "../Utils/FireBase.jsx";
+
 
 export const ItemDetails = () => {
   const { idMovie } = useParams();
@@ -20,19 +20,15 @@ export const ItemDetails = () => {
   };
 
   useEffect(() => {
+    getSingleDoc("Movies", idMovie)
+      .then((value) => {
+        setMovie(value.data());
+      })
+      .catch((err) => alert(err));
 
-    const db = getFirestore();
-    const data = doc(db, "Movies", idMovie);  // aca ver como hago que busque el id que yo cree, en teoria es un string
+    setLoading(false);
+  }, []);
 
-    getDoc(data)
-        .then((value) => { console.log(value.data())
-          setMovie(value.data()) ;
-          }).catch((err) => alert(err));
-
-          setLoading(false);
-        },[])
-        
-        
   if (loading) {
     return <LoadingWidget />;
   }
