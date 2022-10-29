@@ -4,10 +4,13 @@ import { Utils } from "./Utils";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { useUserContext } from "../context/UserContext";
 
 export const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState(false);
   const [categories, setCategories] = useState([]);
+
+  const { currentUser} = useUserContext();
 
   const changeColor = () => {
     if (window.scrollY >= 50) {
@@ -52,11 +55,12 @@ export const NavBar = () => {
               </Link>
             </li>
           ))}
-          
+          <div>{Object.keys(currentUser).length === 0 ? "" : "EN SESION "+currentUser.name+" "+currentUser.surname } </div>
         </ul>
         <Link to="/cart">
           <CartWidget />
         </Link>
+        
       </nav>
     </div>
   );

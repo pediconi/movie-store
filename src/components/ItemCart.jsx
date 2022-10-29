@@ -27,7 +27,7 @@ export const ItemCart = ({ movie }) => {
 
         <div className={styles.description}>
           <p className={styles.moviePrice}>
-            <strong>${movie.price}</strong>
+            ${movie.price}
           </p>
         </div>
       </div>

@@ -4,13 +4,7 @@ import styles from "../assets/css/ItemListContainer.module.css";
 import { ItemList } from "./ItemList";
 import { LoadingWidget } from "./LoadingWidget";
 import { getCollection, filterCollection} from "../Utils/FireBase.jsx";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+
 
 export const ItemListContainer = (props) => {
   const { idCategory } = useParams();
@@ -19,9 +13,6 @@ export const ItemListContainer = (props) => {
 
   useEffect(() => {
     setLoading(true);
-
-   /*  const db = getFirestore();
-    const data = collection(db, "Movies"); */
 
     if (idCategory) {
 
@@ -33,18 +24,6 @@ export const ItemListContainer = (props) => {
       })
       .catch((err) => console.log(err));
 
-      /*const q = query(data, where("category", "==", idCategory));
-
-      getDocs(q)
-        .then((value) => {
-          const resp = value.docs.map((value) => {
-            return value.data();
-          });
-          setMovies(resp);
-        })
-        .catch((err) => console.log(err));*/
-
-
     } else {
 
       getCollection("Movies").then((value) => {
@@ -54,15 +33,7 @@ export const ItemListContainer = (props) => {
         setMovies(resp);
       })
       .catch((err) => alert(err));
-
-      /*getDocs(data)
-        .then((value) => {
-          const resp = value.docs.map((value) => {
-            return value.data();
-          });
-          setMovies(resp);
-        })
-        .catch((err) => alert(err));*/
+  
     }
 
     setLoading(false);

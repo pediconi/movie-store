@@ -1,43 +1,10 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from 'react'
 import styles from "../assets/css/ItemDetails.module.css";
-import { LoadingWidget } from "./LoadingWidget";
 import { ItemCount } from "./ItemCount";
-import { useCartContext } from "../context/CartContext";
-import { getSingleDoc } from "../Utils/FireBase.jsx";
 
-
-export const ItemDetails = () => {
-  const { idMovie } = useParams();
-  const [movie, setMovie] = useState();
-  const [loading, setLoading] = useState(true);
-
-  const { addMovie } = useCartContext(); // traigo esta funcion del cart context
-
-  const onAdd = (quantity) => {
-    addMovie(movie, quantity); // llamo al metodo addMovie que me provee el cart Context
-  };
-
-  useEffect(() => {
-    getSingleDoc("Movies", idMovie)
-      .then((value) => {
-        setMovie(value.data());
-      })
-      .catch((err) => alert(err));
-
-    setLoading(false);
-  }, []);
-
-  if (loading) {
-    return <LoadingWidget />;
-  }
-
-  if (!movie) {
-    return null;
-  }
-
+export const ItemDetails = ({movie, onAdd}) => {
   return (
+
     <div
       className={styles.container}
       style={{
@@ -57,7 +24,7 @@ export const ItemDetails = () => {
         <p>
           <strong>Genre: </strong>
           {movie.genres.map((genre) => genre).join(", ")}
-          {/*forEach no devuelve nada, map devuelve un nuevo array modificado por la funcion que se indique */}
+          
         </p>
 
         <p>
@@ -68,5 +35,6 @@ export const ItemDetails = () => {
         </p>
       </div>
     </div>
-  );
-};
+    
+  )
+}

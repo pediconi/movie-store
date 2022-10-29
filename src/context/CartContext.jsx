@@ -18,6 +18,7 @@ export const CartContextProvider = ({ children }) => {
 
   const addMovie = (movie, quantity) => {
     if (movie.onCart + quantity <= movie.stock) {
+      
       let newCart;
       let findMovie = cart.find((el) => el.id === movie.id);
 
@@ -27,14 +28,14 @@ export const CartContextProvider = ({ children }) => {
         setCart(newCart);
         setTotalItems(totalItems + quantity);
         setTotal(total + movie.price * quantity);
-        SweetAlert.Confirm();
+        SweetAlert.Confirm("Pelicula Agregada","");
       } else if (!findMovie) {
         findMovie = { ...movie, onCart: quantity };
         newCart = [...cart, findMovie];
         setCart(newCart);
         setTotalItems(totalItems + quantity);
         setTotal(total + movie.price * quantity);
-        SweetAlert.Confirm();
+        SweetAlert.Confirm("Pelicula Agregada","");
       } else {
         SweetAlert.Rejected("Stock Insuficiente");
       }
@@ -60,7 +61,7 @@ export const CartContextProvider = ({ children }) => {
 
   const checkEmptyCart = () => {
     if (totalItems === 1) {
-      SweetAlert.Info("Carrito Vacio");
+      SweetAlert.Info("Carrito Vacio","");
     }
   };
 

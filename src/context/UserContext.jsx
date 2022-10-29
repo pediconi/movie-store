@@ -11,9 +11,10 @@ export const useUserContext = () => useContext(UsuarioContext);
 export const UserContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
 
-  const createUser = (name, surname, email) => {
+  const createUser = (name, surname,phone, email) => {
     if (Object.keys(currentUser).length === 0) {
-      setCurrentUser({ name: name, surname: surname, email: email });
+      setCurrentUser({ name: name, surname: surname, phone: phone, email: email });
+      SweetAlert.Confirm("Bienvenido", name + surname)
     } else {
       SweetAlert.Rejected("Usuario ya Ingesado");
       return currentUser;

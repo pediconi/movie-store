@@ -1,0 +1,18 @@
+.buttonLogIn {
+    background-color: transparent;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 100px;
+    height: 40px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #969696;
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .buttonLogIn:hover {
+    background-color: #969696;
+    color: white;
+  }

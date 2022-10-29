@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 
 export const SweetAlert = {
-  Confirm: () => {
+  Confirm: (message1, message2) => {
     return Swal.fire({
-      title: "Pelicula agregada!",
-      timer: "2000",
+      title: message1,
+      text: message2,
       icon: "success",
       confirmButtonText: "Aceptar",
     });
@@ -17,10 +17,10 @@ export const SweetAlert = {
       confirmButtonText: "Aceptar",
     });
   },
-  Info: (message) => {
+  Info: (message1, message2) => {
     return Swal.fire({
-      title: message,
-      timer: "2000",
+      title: message1,
+      text: message2,
       icon: "info",
       confirmButtonText: "Aceptar",
     });
