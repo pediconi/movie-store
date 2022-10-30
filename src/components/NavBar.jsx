@@ -51,7 +51,7 @@ export const NavBar = () => {
               <Link to={"/category/" + categorie.name}>
                 {" "}
                 {categorie.name.charAt(0).toUpperCase() +  //paso a mayuscula la primera letra
-                  categorie.name.slice(1)}
+                  categorie.name.slice(1)+"s"}
               </Link>
             </li>
           ))}

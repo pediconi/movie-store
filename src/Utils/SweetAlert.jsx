@@ -9,9 +9,10 @@ export const SweetAlert = {
       confirmButtonText: "Aceptar",
     });
   },
-  Rejected: (message) => {
+  Rejected: (message1, message2) => {
     return Swal.fire({
-      title: message,
+      title: message1,
+      text: message2,
       timer: "2000",
       icon: "error",
       confirmButtonText: "Aceptar",

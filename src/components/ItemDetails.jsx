@@ -22,6 +22,10 @@ export const ItemDetails = ({movie, onAdd}) => {
         </p>
 
         <p>
+          <strong> Description</strong> : {movie.overview}
+        </p>
+
+        <p>
           <strong>Genre: </strong>
           {movie.genres.map((genre) => genre).join(", ")}
           

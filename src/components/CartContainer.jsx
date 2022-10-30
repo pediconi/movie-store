@@ -52,7 +52,7 @@ export const CartContainer = () => {
         )}
       </ul>
 
-      {cart.length ? ( // si falla aca iba solo el signinuser, directo sin condicional
+      {cart.length ? ( 
         <div>
           <SignInUser />
           <div className={styles.checkOutInformation}>

@@ -14,7 +14,7 @@ export const CartContextProvider = ({ children }) => {
   const [totalItems, setTotalItems] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const exist = (movie) => cart.some((el) => el.id === movie.id); // verifico si ya existe la pelicula en el carrito
+  const exist = (movie) => cart.some((el) => el.id === movie.id); 
 
   const addMovie = (movie, quantity) => {
     if (movie.onCart + quantity <= movie.stock) {

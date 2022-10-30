@@ -16,3 +16,14 @@
     background-color: #969696;
     color: white;
   }
+
+  .input{
+    width: 90%;
+    padding: 3px;
+    margin: 3px;
+  }
+
+  .form{
+    margin: 70px;
+    text-align: center;
+  }
